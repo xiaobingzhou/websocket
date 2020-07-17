@@ -3,6 +3,12 @@ package com.github.xiaobingzhou.websocket.cluster.action;
 import com.alibaba.fastjson.JSONObject;
 import com.github.xiaobingzhou.websocket.WebSocketManager;
 
+/**
+ * 定义集群操作接口
+ * @author xiaobingzhou
+ * @date 2020/7/17 16:04
+ * @since 1.0.0
+ */
 @FunctionalInterface
 public interface Action {
     String IDENTIFIER = "identifier";

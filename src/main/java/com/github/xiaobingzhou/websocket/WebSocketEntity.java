@@ -6,6 +6,12 @@ import javax.websocket.Session;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * websocket管理器保存的实体类
+ * @author xiaobingzhou
+ * @date 2020/7/17 16:06
+ * @since 1.0.0
+ */
 @Data
 public class WebSocketEntity<T> {
     /**

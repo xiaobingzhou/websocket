@@ -13,6 +13,12 @@ import javax.websocket.Session;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * 连接保存在内存中的websocket管理器
+ * @author xiaobingzhou
+ * @date 2020/7/17 16:06
+ * @since 1.0.0
+ */
 @Slf4j
 public class MemoryWebSocketManager implements WebSocketManager, ApplicationContextAware {
     /**

@@ -7,7 +7,7 @@ import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
 
 /**
- * 根据注解 {@code EnableWebSocketManager} 动态选择配置类
+ * 根据注解 {@link EnableWebSocketManager } 动态选择配置类
  * @author xiaobingzhou
  * @date 2020/7/17 14:19
  * @since 1.0.0

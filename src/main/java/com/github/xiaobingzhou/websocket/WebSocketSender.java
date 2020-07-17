@@ -7,8 +7,12 @@ import java.io.IOException;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 /**
- * websocket消息发送器
+ * 本地websocket连接消息发送器
+ * @author xiaobingzhou
+ * @date 2020/7/17 16:07
+ * @since 1.0.0
  */
 @Slf4j
 public class WebSocketSender {
