@@ -17,14 +17,21 @@ import javax.websocket.Session;
 public class BroadCastAction implements Action {
     @Override
     public void handle(WebSocketManager manager, JSONObject jsonObject) {
-        log.info(jsonObject.toString());
+        if (log.isDebugEnabled()) {
+            log.debug("[cluster]BroadCastAction={}", jsonObject.toString());
+        }
+
         String message = jsonObject.getString(MESSAGE);
         if (message == null) {
             return;
         }
 
+        if (log.isDebugEnabled()) {
+            log.debug("[local] 广播信息, message={}", message);
+        }
+
         manager.localWebSocketMap().values()
-                .forEach(webSocket -> webSocket.getSessions().stream()
+                .forEach(webSocketEntity -> webSocketEntity.getSessions().stream()
                         .forEach(session -> WebSocketSender.sendMessage((Session) session, message)));
     }
 }

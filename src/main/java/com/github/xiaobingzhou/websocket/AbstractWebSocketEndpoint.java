@@ -16,24 +16,12 @@ public abstract class AbstractWebSocketEndpoint {
 
     protected static final Logger logger = LoggerFactory.getLogger(AbstractWebSocketEndpoint.class);
 
-    private WebSocketManager webSocketManager;
-
-    /**
-     * 连接来源
-     * @see WebSocketFrom
-     */
-    protected static final String FROM = "from";
-
-    /**
-     * 路径标识：目前使用token来代表
-     */
-    protected static final String IDENTIFIER = "identifier";
-
     public void connect(Session session, String from, String identifier) {
         try {
             if(null == identifier || "".equals(identifier)){
                 return;
             }
+
             WebSocketManager websocketManager = this.getWebSocketManager();
             WebSocketEntity webSocketEntity = websocketManager.get(identifier);
             if (webSocketEntity == null) {

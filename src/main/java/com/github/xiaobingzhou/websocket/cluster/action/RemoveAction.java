@@ -30,7 +30,10 @@ public class RemoveAction implements Action {
 
     @Override
     public void handle(WebSocketManager manager, JSONObject jsonObject) {
-        log.info(jsonObject.toString());
+        if (log.isDebugEnabled()) {
+            log.debug("[cluster]RemoveAction={}", jsonObject.toString());
+        }
+
         String identifier = jsonObject.getString(Action.IDENTIFIER);
         if (identifier == null) {
             return;
@@ -52,6 +55,10 @@ public class RemoveAction implements Action {
                 .filter(session -> session.getId().equals(sessionId))
                 .findFirst()
                 .ifPresent(session -> {
+                    if (log.isDebugEnabled()) {
+                        log.debug("[local] remove session, webSocketEntity={}, sessionId={}", webSocketEntity, sessionId);
+                    }
+
                     sessions.remove(session);
                     if (sessions.isEmpty()) {
                         connections.remove(identifier);

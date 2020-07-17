@@ -19,7 +19,10 @@ public class SendMessageAction implements Action {
 
     @Override
     public void handle(WebSocketManager manager, JSONObject jsonObject) {
-        log.info(jsonObject.toString());
+        if (log.isDebugEnabled()) {
+            log.debug("[cluster]SendMessageAction={}", jsonObject.toString());
+        }
+
         String identifier = jsonObject.getString(IDENTIFIER);
         if (identifier == null) {
             return;
@@ -30,8 +33,14 @@ public class SendMessageAction implements Action {
             return;
         }
 
+
+
         Optional.ofNullable(manager.get(identifier))
                 .ifPresent(webSocketEntity -> {
+                    if (log.isDebugEnabled()) {
+                        log.debug("[local] WebSocketSender.sendMessage, webSocketEntity={}, message={}", webSocketEntity, message);
+                    }
+
                     // 发送消息
                     webSocketEntity.getSessions().stream()
                         .forEach((session) -> WebSocketSender.sendMessage((Session) session, message));

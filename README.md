@@ -1,64 +1,11 @@
 # message-frame
-### 1.0.0 版本支持功能 
-> websocket集群支持
-
+### 1.0.0 版本支持功能
+- websocket集群管理功能（当前只有redis消息订阅发布这一种实现方式，其实也可以使用消息队列来实现）
 ---
-```java
-/**
-* 使用例子
-*/
-@ServerEndpoint(value="/webSocket/{identifier}")
-public class WebSocketEndpoint extends AbstractWebSocketEndpoint {
-
-    public WebSocketEndpoint(WebSocketManager webSocketManager) {
-        super(webSocketManager);
-    }
-
-    @OnOpen
-    public void onOpen(Session session, @PathParam(IDENTIFIER) String identifier) {
-        if (logger.isInfoEnabled()) {
-            logger.info("*** WebSocket opened sessionId: {}, identifier: {}", session.getId(), identifier);
-        }
-
-        connect(session, identifier);
-    }
-
-    //
-    @OnMessage
-    public void onMessage(String message, Session session, @PathParam(IDENTIFIER) String identifier) {
-        if (logger.isInfoEnabled()) {
-            logger.info("*** WebSocket 接收到的数据为: {}, sessionId: {}, identifier: {}", message, session.getId(), identifier);
-        }
-
-        receiveMessage(message, session, identifier);
-    }
-
-    //
-    @OnClose
-    public void onClose(Session session, @PathParam(IDENTIFIER) String identifier) {
-        if (logger.isInfoEnabled()) {
-            logger.info("*** WebSocket closed sessionId: {}, identifier: {}", session.getId(), identifier);
-        }
-
-        disconnect(session, identifier);
-    }
-
-    //
-    @OnError
-    public void onError(Throwable t, Session session, @PathParam(IDENTIFIER) String identifier){
-        if (logger.isInfoEnabled()) {
-            logger.info("*** WebSocket 发生异常: {}, sessionId: {}, identifier: {}", t.getMessage(), session.getId(), identifier);
-        }
-
-        if (logger.isErrorEnabled()) {
-            logger.error(t.getMessage(), t);
-        }
-
-        disconnect(session, identifier);
-    }
-}
-
-```
+### 使用用法
+- 启用websocket管理器功能使用注解: @EnableWebSocketManager 
+- 默认启用的是本地内存管理器: MemoryWebSocketManager
+- 需要开启websocket集群管理器，请设置 @EnableWebSocketManager的enableCluster属性为true
 
 ## 使用方式
 

@@ -19,7 +19,7 @@ import java.lang.annotation.*;
 @Import(WebSocketManagerConfigurationSelector.class)
 public @interface EnableWebSocketManager {
 
-    boolean enableCluster() default true;
+    boolean enableCluster() default false;
 
     ClusterType type() default ClusterType.REDIS;
 

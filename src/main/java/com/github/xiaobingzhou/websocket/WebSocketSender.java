@@ -59,7 +59,7 @@ public class WebSocketSender {
             synchronized (session) {
                 try {
                     if (log.isDebugEnabled()) {
-                        log.debug("websocket 同步发送 " + message);
+                        log.debug("websocket 同步发送, sessionId={}, message={}", session.getId(), message);
                     }
                     session.getBasicRemote().sendText(message);
                 } catch (IOException e) {
