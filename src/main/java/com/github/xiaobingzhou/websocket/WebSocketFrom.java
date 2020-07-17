@@ -11,6 +11,6 @@ public enum WebSocketFrom {
                 return value;
             }
         }
-        throw new IllegalArgumentException("WebSocketFrom not support " +from);
+        throw new IllegalArgumentException("WebSocketFrom not support " + from);
     }
 }

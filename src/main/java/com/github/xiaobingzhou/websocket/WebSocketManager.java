@@ -3,6 +3,14 @@ package com.github.xiaobingzhou.websocket;
 import javax.websocket.Session;
 import java.util.Map;
 
+/**
+ * websocket 管理器接口
+ * @author xiaobingzhou
+ * @date 2020/7/17 14:54
+ * @since 1.0.0
+ * @see MemoryWebSocketManager
+ * @see com.github.xiaobingzhou.websocket.cluster.redis.RedisWebSocketManager
+ */
 public interface WebSocketManager {
     /**
      * 在容器中的名字

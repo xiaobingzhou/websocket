@@ -10,6 +10,7 @@ import javax.websocket.Session;
  * @author xiaobingzhou
  * @date 2020/7/17 14:03
  * @since 1.0.0
+ * @see WebSocketManager
  */
 public abstract class AbstractWebSocketEndpoint {
 
@@ -33,7 +34,7 @@ public abstract class AbstractWebSocketEndpoint {
             if(null == identifier || "".equals(identifier)){
                 return;
             }
-            WebSocketManager websocketManager = this.webSocketManager;
+            WebSocketManager websocketManager = this.getWebSocketManager();
             WebSocketEntity webSocketEntity = websocketManager.get(identifier);
             if (webSocketEntity == null) {
                 webSocketEntity = new WebSocketEntity();
@@ -50,11 +51,11 @@ public abstract class AbstractWebSocketEndpoint {
     }
 
     public void disconnect(Session session, String from, String identifier) {
-        this.webSocketManager.remove(identifier, session);
+        this.getWebSocketManager().remove(identifier, session);
     }
 
     public void receiveMessage(String message, Session session, String from, String identifier) {
-        WebSocketManager webSocketManager = this.webSocketManager;
+        WebSocketManager webSocketManager = this.getWebSocketManager();
         // 心跳监测
         if(webSocketManager.isPing(identifier, message, session)){
             String pong = webSocketManager.pong(identifier, message, session);

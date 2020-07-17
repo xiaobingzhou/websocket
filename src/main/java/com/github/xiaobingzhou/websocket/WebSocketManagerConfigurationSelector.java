@@ -3,10 +3,8 @@ package com.github.xiaobingzhou.websocket;
 import com.github.xiaobingzhou.websocket.cluster.ClusterType;
 import com.github.xiaobingzhou.websocket.cluster.redis.RedisWebSocketManagerConfig;
 import org.springframework.context.annotation.ImportSelector;
-import org.springframework.core.GenericTypeResolver;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotationMetadata;
-import org.springframework.util.Assert;
 
 /**
  * 根据注解 {@code EnableWebSocketManager} 动态选择配置类
@@ -23,15 +21,12 @@ public class WebSocketManagerConfigurationSelector implements ImportSelector {
     public static final String TYPE = "type";
 
     @Override
-    public String[] selectImports(AnnotationMetadata importingClassMetadata) {
-        Class<?> annType = GenericTypeResolver.resolveTypeArgument(getClass(), WebSocketManagerConfigurationSelector.class);
-        Assert.state(annType != null, "Unresolvable type argument for WebSocketManagerConfigurationSelector");
-
-        AnnotationAttributes attributes = AnnotationAttributes.fromMap(importingClassMetadata.getAnnotationAttributes(annType.getName(), false));
+    public final String[] selectImports(AnnotationMetadata importingClassMetadata) {
+        AnnotationAttributes attributes = AnnotationAttributes.fromMap(importingClassMetadata.getAnnotationAttributes(EnableWebSocketManager.class.getName(), false));
         if (attributes == null) {
             throw new IllegalArgumentException(String.format(
                     "@%s is not present on importing class '%s' as expected",
-                    annType.getSimpleName(), importingClassMetadata.getClassName()));
+                    ClusterType.class.getSimpleName(), importingClassMetadata.getClassName()));
         }
 
         // 是否启用集群配置
