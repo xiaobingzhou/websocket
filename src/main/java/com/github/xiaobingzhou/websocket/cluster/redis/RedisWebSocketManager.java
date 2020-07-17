@@ -1,7 +1,7 @@
 package com.github.xiaobingzhou.websocket.cluster.redis;
 
 import com.alibaba.fastjson.JSON;
-import com.github.xiaobingzhou.websocket.WebSocketManagerImpl;
+import com.github.xiaobingzhou.websocket.MemoryWebSocketManager;
 import com.github.xiaobingzhou.websocket.cluster.action.Action;
 import com.github.xiaobingzhou.websocket.cluster.action.BroadCastAction;
 import com.github.xiaobingzhou.websocket.cluster.action.RemoveAction;
@@ -12,7 +12,7 @@ import javax.websocket.Session;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RedisWebSocketManager extends WebSocketManagerImpl {
+public class RedisWebSocketManager extends MemoryWebSocketManager {
     public static final String CHANNEL = "websocket";
     protected StringRedisTemplate stringRedisTemplate;
 

@@ -14,7 +14,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Slf4j
-public class WebSocketManagerImpl implements WebSocketManager, ApplicationContextAware {
+public class MemoryWebSocketManager implements WebSocketManager, ApplicationContextAware {
     /**
      * 因为全局只有一个 WebSocketManager ，所以才敢定义为非static
      */

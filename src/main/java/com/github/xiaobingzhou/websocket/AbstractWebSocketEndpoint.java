@@ -11,10 +11,6 @@ public abstract class AbstractWebSocketEndpoint {
 
     private WebSocketManager webSocketManager;
 
-    public AbstractWebSocketEndpoint(WebSocketManager webSocketManager) {
-        this.webSocketManager = webSocketManager;
-    }
-
     /**
      * 连接来源
      * @see WebSocketFrom
@@ -61,6 +57,14 @@ public abstract class AbstractWebSocketEndpoint {
         }
         // 收到其他消息的时候
         webSocketManager.onMessage(identifier, message, session);
+    }
+
+    public WebSocketManager getWebSocketManager() {
+        return webSocketManager;
+    }
+
+    public void setWebSocketManager(WebSocketManager webSocketManager) {
+        this.webSocketManager = webSocketManager;
     }
 
 }

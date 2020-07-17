@@ -16,6 +16,7 @@ import java.util.Optional;
  */
 @Slf4j
 public class SendMessageAction implements Action {
+
     @Override
     public void handle(WebSocketManager manager, JSONObject jsonObject) {
         log.info(jsonObject.toString());

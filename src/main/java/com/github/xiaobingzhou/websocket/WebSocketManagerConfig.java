@@ -10,7 +10,7 @@ public class WebSocketManagerConfig {
 
     @Bean(WebSocketManager.WEBSOCKET_MANAGER_NAME)
     public WebSocketManager webSocketManager() {
-        return new WebSocketManagerImpl();
+        return new MemoryWebSocketManager();
     }
 
 }
