@@ -20,9 +20,13 @@ import java.util.Map;
  * @since 1.0.0
  */
 @Slf4j
-public class RemoveAction implements Action, ApplicationContextAware {
+public class RemoveAction implements Action {
 
     private ApplicationContext applicationContext;
+
+    public RemoveAction(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
 
     @Override
     public void handle(WebSocketManager manager, JSONObject jsonObject) {
@@ -63,8 +67,4 @@ public class RemoveAction implements Action, ApplicationContextAware {
         applicationContext.publishEvent(webSocketCloseEvent);
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-    }
 }
