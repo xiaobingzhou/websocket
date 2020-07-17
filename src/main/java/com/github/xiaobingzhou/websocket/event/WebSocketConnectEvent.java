@@ -6,9 +6,9 @@ import javax.websocket.Session;
 
 /**
  * WebSocket 连接事件
- * @author bell.zhouxiaobing
+ * @author xiaobingzhou
  * @date 2020/7/16 13:31
- * @since
+ * @since 1.0.0
  */
 public class WebSocketConnectEvent extends WebSocketEvent {
     private Session session;

@@ -16,9 +16,9 @@ import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 
 /**
  * 配置redis消息订阅功能
- * @author bell.zhouxiaobing
+ * @author xiaobingzhou
  * @date 2020/7/17 11:02
- * @since
+ * @since 1.0.0
  */
 @Configuration
 @Import(ActionConfig.class)

@@ -5,6 +5,12 @@ import org.slf4j.LoggerFactory;
 
 import javax.websocket.Session;
 
+/**
+ * websocket 连接endpoint
+ * @author xiaobingzhou
+ * @date 2020/7/17 14:03
+ * @since 1.0.0
+ */
 public abstract class AbstractWebSocketEndpoint {
 
     protected static final Logger logger = LoggerFactory.getLogger(AbstractWebSocketEndpoint.class);
@@ -59,12 +65,6 @@ public abstract class AbstractWebSocketEndpoint {
         webSocketManager.onMessage(identifier, message, session);
     }
 
-    public WebSocketManager getWebSocketManager() {
-        return webSocketManager;
-    }
-
-    public void setWebSocketManager(WebSocketManager webSocketManager) {
-        this.webSocketManager = webSocketManager;
-    }
+    public abstract WebSocketManager getWebSocketManager();
 
 }

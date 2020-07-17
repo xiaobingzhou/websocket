@@ -12,6 +12,12 @@ import javax.websocket.Session;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * 使用redis实现websocket管理器
+ * @author xiaobingzhou
+ * @date 2020/7/17 13:57
+ * @since 1.0.0
+ */
 public class RedisWebSocketManager extends MemoryWebSocketManager {
     public static final String CHANNEL = "websocket";
     protected StringRedisTemplate stringRedisTemplate;

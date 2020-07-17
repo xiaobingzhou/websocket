@@ -5,9 +5,9 @@ import org.springframework.context.ApplicationEvent;
 
 /**
  * websocket 事件
- * @author bell.zhouxiaobing
+ * @author xiaobingzhou
  * @date 2020/7/16 21:46
- * @since
+ * @since 1.0.0
  */
 public class WebSocketEvent extends ApplicationEvent {
     public WebSocketEvent(WebSocketEntity webSocketEntity){

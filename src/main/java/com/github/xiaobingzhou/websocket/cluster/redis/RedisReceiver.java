@@ -8,6 +8,12 @@ import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
+/**
+ * redis消息接收器
+ * @author xiaobingzhou
+ * @date 2020/7/17 13:59
+ * @since 1.0.0
+ */
 public class RedisReceiver implements Receiver, ApplicationContextAware {
 
     private ApplicationContext applicationContext;

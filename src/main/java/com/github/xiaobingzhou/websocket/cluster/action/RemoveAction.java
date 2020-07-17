@@ -15,9 +15,9 @@ import java.util.Map;
 
 /**
  * 移除连接，注意不要出现循环执行
- * @author bell.zhouxiaobing
+ * @author xiaobingzhou
  * @date 2020/7/16 22:00
- * @since
+ * @since 1.0.0
  */
 @Slf4j
 public class RemoveAction implements Action, ApplicationContextAware {
