@@ -10,6 +10,6 @@ import org.springframework.context.annotation.Import;
  * @since 1.0.0
  */
 @Configuration
-@Import({SendMessageAction.class , BroadCastAction.class , RemoveAction.class , NoActionAction.class})
+@Import({SendMessageAction.class, BroadCastAction.class, NoActionAction.class})
 public class ActionConfig {
 }

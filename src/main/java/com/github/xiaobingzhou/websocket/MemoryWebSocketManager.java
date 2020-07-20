@@ -59,12 +59,14 @@ public class MemoryWebSocketManager implements WebSocketManager, ApplicationCont
             return;
         }
 
-        webSocketEntity.removeSession(session);
+        boolean removeSession = webSocketEntity.removeSession(session);
         if (webSocketEntity.getSessions().isEmpty()) {
             connections.remove(identifier);
         }
 
-        publishEvent(new WebSocketCloseEvent(webSocketEntity, session));
+        if (removeSession) {
+            publishEvent(new WebSocketCloseEvent(webSocketEntity, session));
+        }
     }
 
     @Override

@@ -19,8 +19,17 @@ import java.lang.annotation.*;
 @Import(WebSocketManagerConfigurationSelector.class)
 public @interface EnableWebSocketManager {
 
+    /**
+     * 是否启用集群管理器
+     * @return
+     */
     boolean enableCluster() default false;
 
+    /**
+     * <p>选择集群管理器的实现方式</p>
+     * <p>ps: 只有当启用集群管理器({@code enableCluster=true})时，type配置才有效</p>
+     * @return
+     */
     ClusterType type() default ClusterType.REDIS;
 
 }
